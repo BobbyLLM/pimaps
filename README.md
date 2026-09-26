@@ -1,5 +1,10 @@
 # Pi Maps — Western Australia
 
+
+<img width="1920" height="913" alt="image" src="https://github.com/user-attachments/assets/868fcaa4-32a5-4e1d-959e-6259ae6f209d" />
+
+
+
 Pi Maps is a small self-hosted map for Western Australia: local vector maps,
 local search, and local BRouter driving routes, with an optional local Wikipedia
 layer through Kiwix.
