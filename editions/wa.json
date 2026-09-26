@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "edition_id": "wa",
+  "edition_name": "Western Australia",
+  "data_version": "2026-09-26",
+  "map": {
+    "filename": "map.pmtiles",
+    "default_center": [121.5, -25.0],
+    "default_zoom": 4.2
+  },
+  "search": { "filename": "search.sqlite" },
+  "routing": { "profile": "car-vario", "directory": "routing" },
+  "wikipedia": {
+    "available": true,
+    "filename": "wiki-pois.sqlite",
+    "zim_name": "wikipedia_en_all_mini_2026-06.zim",
+    "article_prefix": "/content/wikipedia_en_all_mini_2026-06/"
+  },
+  "assets": [
+    {"path":"map.pmtiles","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/map.pmtiles","size":349764496,"sha256":"e1bca924c18fae8a2e4f98e4d6367c0c630ee8775ca1f5e52d87c06c9389149a"},
+    {"path":"search.sqlite","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/search.sqlite","size":78233600,"sha256":"f9623d63fea46b66284b2f595b3836c54aad53c2861f0633cf2ec980d4d88347"},
+    {"path":"wiki-pois.sqlite","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/wiki-pois.sqlite","size":729088,"sha256":"611971568eb67ac1e7e02bcdc1833436dad67eff81eca562385938edc883f304"},
+    {"path":"routing/segments/E110_S25.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E110_S25.rd5","size":262484,"sha256":"bdfc6ab39db75cf2dab2c126a73688ce09d502939aca4915e745fc78858ce8f5"},
+    {"path":"routing/segments/E110_S30.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E110_S30.rd5","size":535949,"sha256":"eeea220827a7b6e90cb5377dcfca06a1fc34d0fdba461c9dbe1698d7945e4217"},
+    {"path":"routing/segments/E110_S35.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E110_S35.rd5","size":42522,"sha256":"115094f40dbbef02ffe0148164ed0bfde821565b0f421bdf0051a2584f9d143a"},
+    {"path":"routing/segments/E115_S15.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E115_S15.rd5","size":6298,"sha256":"c6907e6ba066eeab99a3e861193f0d898291b48aa5ccf2c59ef5c04c79b9f611"},
+    {"path":"routing/segments/E115_S20.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E115_S20.rd5","size":9087,"sha256":"9de85ad7c3c193a4b2f7151eeec3a4d7fbe7159cb9402b9cbc13c9d23dab1849"},
+    {"path":"routing/segments/E115_S25.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E115_S25.rd5","size":1622947,"sha256":"4107f6f917009e2d253c767d6f999ada3a3cf3b6820aba8ed84131cdbaac97ed"},
+    {"path":"routing/segments/E115_S30.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E115_S30.rd5","size":798520,"sha256":"dae4322b0be2ffb8be37d9233180b2360c4dbf4acd5d34c165a12cf20192861d"},
+    {"path":"routing/segments/E115_S35.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E115_S35.rd5","size":12003876,"sha256":"cd581edfbe6edd88112e9a0c9e308dd63f006b11f6394f1494364030d6bbb878"},
+    {"path":"routing/segments/E115_S40.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E115_S40.rd5","size":163638,"sha256":"b3ec8b36a74a13d7f66fcc87239874880ad30607d0a739adb65ebcbb8a52a4c4"},
+    {"path":"routing/segments/E120_S15.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E120_S15.rd5","size":1434370,"sha256":"0d2f15562276f867d0368051b09b14e14dcf1d528536c5186eed1119c50233ec"},
+    {"path":"routing/segments/E120_S20.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E120_S20.rd5","size":381603,"sha256":"0c12aee48d6b63ca63495540dc0ca33301fab19bf9d7afda2a2f4dd57f05924a"},
+    {"path":"routing/segments/E120_S25.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E120_S25.rd5","size":453438,"sha256":"77b48733aefb0545a3a2d60c325a27e02db1eaddffa5a5f35051df91175d70b7"},
+    {"path":"routing/segments/E120_S30.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E120_S30.rd5","size":570767,"sha256":"7a2a1396c79d684a9dacd69b4c16449b6f2832e678fe1bce0acadff26eb79cbc"},
+    {"path":"routing/segments/E120_S35.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E120_S35.rd5","size":760478,"sha256":"22a2f0401638443b6afe3c1c3f7df348156efd9eeac708a63b62958506bb0af2"},
+    {"path":"routing/segments/E125_S15.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E125_S15.rd5","size":142478,"sha256":"42b60ec7116d95f6d3742cdd7767fe261645e2567adf094aaad9fd62863a1fea"},
+    {"path":"routing/segments/E125_S20.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E125_S20.rd5","size":856009,"sha256":"1817e8e3e3d2a2fabe1115c7e66474ae84a1a7bce060e3c0c4d9460c334a1d3f"},
+    {"path":"routing/segments/E125_S25.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E125_S25.rd5","size":295034,"sha256":"a43e812b42b00ae9f0b74289c55af77c65fda94a355f042915aa4a7f2f039f59"},
+    {"path":"routing/segments/E125_S30.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E125_S30.rd5","size":317561,"sha256":"9e21306bc26a04e187b3dc1762241600cbfb54289c8f8236b3ddc10850e00765"},
+    {"path":"routing/segments/E125_S35.rd5","url":"https://github.com/BobbyLLM/pimaps/releases/download/v1.0.0/E125_S35.rd5","size":244346,"sha256":"0498fb52b36394bad412bd0e3639ffc56c153982d9b4ee7d291cbde8933f15ab"},
+    {"path":"zim/wikipedia_en_all_mini_2026-06.zim","url":"https://download.kiwix.org/zim/wikipedia/wikipedia_en_all_mini_2026-06.zim","size":12531679311,"sha256":"1d0f8178709481c831272d95f95dccc030e9193e38e732b86b1938ae2606226e","optional":true}
+  ],
+  "provenance": {
+    "osm": {
+      "provider": "OpenStreetMap",
+      "source_identifier": "wa.osm.pbf",
+      "source_url": "UNKNOWN_NOT_RETAINED",
+      "source_date": "2026-09-25T04:00:00Z",
+      "replication_sequence": 123021,
+      "source_filename": "wa.osm.pbf",
+      "source_size_bytes": 114620230,
+      "source_sha256": "UNKNOWN_NOT_RETAINED",
+      "license": "OpenStreetMap ODbL 1.0; attribution required"
+    },
+    "pmtiles": "Protomaps build 20260925; source provenance retained in the maintainer release record.",
+    "routing": "BRouter segments4; see brouter/segments-wa.txt and release checksums.",
+    "licensing": ["NOTICE.md", "docs/data-bundle-format.md"]
+  }
+}

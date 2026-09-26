@@ -1,0 +1,95 @@
+services:
+  bootstrap:
+    image: python@sha256:79e7a9b9ff1cbceff819f856fb374477792a5967759d94df266de7b7b4120e6f
+    restart: "no"
+    command: ["python3", "/app/bootstrap.py"]
+    environment:
+      MAPS_DATA: /data
+      EDITION_MANIFEST: /app/edition.json
+      ZIM_DOWNLOAD_RATE_MIB: "${ZIM_DOWNLOAD_RATE_MIB:-5}"
+      WIKI_ZIM_DIR: "${WIKI_ZIM_DIR:-}"
+      WIKI_ZIM_NAME: "${WIKI_ZIM_NAME:-wikipedia_en_all_mini_2026-06.zim}"
+    volumes:
+      - ${MAPS_DATA:-./data}:/data
+      - ./editions/wa.json:/app/edition.json:ro
+      - ./scripts/bootstrap.py:/app/bootstrap.py:ro
+  maps:
+    image: nginx:1.29-alpine
+    restart: unless-stopped
+    ports: ["${BIND_ADDRESS:-0.0.0.0}:${HTTP_PORT:-8090}:80"]
+    volumes:
+      - ./web:/srv/maps/web:ro
+      - ${MAPS_DATA:-./data}:/srv/maps/data:ro
+      - ${MAPS_CONFIG:-./config/nginx.core.conf}:/etc/nginx/conf.d/default.conf:ro
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
+  search:
+    image: python@sha256:79e7a9b9ff1cbceff819f856fb374477792a5967759d94df266de7b7b4120e6f
+    restart: unless-stopped
+    command: ["python3", "/app/server.py"]
+    environment:
+      SEARCH_DB_PATH: "/data/search.sqlite"
+      WIKI_DB_PATH: "/data/wiki-pois.sqlite"
+      KIWIX_BASE: "${KIWIX_BASE_URL:-http://kiwix:8080/content/wikipedia_en_all_mini_2026-06/}"
+      WIKI_PREFIX: "${KIWIX_ARTICLE_PREFIX:-/content/wikipedia_en_all_mini_2026-06/}"
+    volumes:
+      - ${MAPS_DATA:-./data}:/data:ro
+      - ./server/server.py:/app/server.py:ro
+    read_only: true
+    tmpfs:
+      - /tmp
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
+  wikipedia-bootstrap:
+    image: python@sha256:79e7a9b9ff1cbceff819f856fb374477792a5967759d94df266de7b7b4120e6f
+    profiles: [wikipedia]
+    restart: "no"
+    command: ["python3", "/app/bootstrap.py"]
+    environment:
+      MAPS_DATA: /data
+      EDITION_MANIFEST: /app/edition.json
+      INCLUDE_OPTIONAL: "1"
+      ZIM_DOWNLOAD_RATE_MIB: "${ZIM_DOWNLOAD_RATE_MIB:-5}"
+      WIKI_ZIM_DIR: /external-zim
+      WIKI_ZIM_NAME: "${WIKI_ZIM_NAME:-wikipedia_en_all_mini_2026-06.zim}"
+    volumes:
+      - ${MAPS_DATA:-./data}:/data
+      - ${WIKI_ZIM_DIR:-${MAPS_DATA:-./data}/zim}:/external-zim:ro
+      - ./editions/wa.json:/app/edition.json:ro
+      - ./scripts/bootstrap.py:/app/bootstrap.py:ro
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
+  kiwix:
+    image: ghcr.io/kiwix/kiwix-serve@sha256:7096f2f2098bbb9ac97f02fe11d51195861a2507667d87a5e8d932fc28106bc2
+    profiles: [wikipedia]
+    restart: unless-stopped
+    command: ["/data/${WIKI_ZIM_NAME:-wikipedia_en_all_mini_2026-06.zim}"]
+    volumes:
+      - ${WIKI_ZIM_DIR:-${MAPS_DATA:-./data}/zim}:/data:ro
+    read_only: true
+    tmpfs:
+      - /tmp
+    depends_on:
+      wikipedia-bootstrap:
+        condition: service_completed_successfully
+  brouter:
+    image: ghcr.io/abrensch/brouter@sha256:e1acdb474dcb2e4aed7cb7fcf1121ce34f72aea94a71b3e84a7269634001f681
+    restart: unless-stopped
+    environment:
+      JAVA_OPTS: "-Xmx128M -Xms128M -Xmn8M -DmaxRunningTime=300 -DuseRFCMimeType=false"
+      MAXTHREADS: "1"
+    volumes:
+      - ${MAPS_DATA:-./data}/routing/segments:/segments4:ro
+    read_only: true
+    tmpfs:
+      - /tmp
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully

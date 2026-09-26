@@ -1,0 +1,20 @@
+# Official BRouter weekly segments covering the WA release area.
+E110_S25.rd5
+E110_S30.rd5
+E110_S35.rd5
+E115_S15.rd5
+E115_S20.rd5
+E115_S25.rd5
+E115_S30.rd5
+E115_S35.rd5
+E115_S40.rd5
+E120_S15.rd5
+E120_S20.rd5
+E120_S25.rd5
+E120_S30.rd5
+E120_S35.rd5
+E125_S15.rd5
+E125_S20.rd5
+E125_S25.rd5
+E125_S30.rd5
+E125_S35.rd5
